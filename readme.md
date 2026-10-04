@@ -1,5 +1,4 @@
 
-
 # *Compte rendu TP 2 : Conteneuriser un modèle et optimiser son image*
 
 ***Module : Cloud Computing et déploiement IA***
@@ -134,4 +133,8 @@ s** |
 **2- Quelle couche gaspille le plus d’espace, et pourquoi ?**
 
 > La couche système de l’image Python, qui installe notamment `ca-certificates`, `netbase` et `tzdata`, gaspille le plus d’espace. Certaines bibliothèques, comme `libcrypto.so.3` et `libssl.so.3`, sont remplacées ou modifiées dans des couches suivantes. Les anciennes versions restent pourtant stockées dans les couches précédentes, car les couches Docker sont immuables. L’espace gaspillé total relevé par Dive est d’environ **21,77 Mo**.
->
+> 
+
+## 6- Trivy security scan
+
+![image.png](screens/image%201.png)

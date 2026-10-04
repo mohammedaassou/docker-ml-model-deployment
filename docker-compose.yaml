@@ -1,0 +1,30 @@
+services:
+  opt6:
+    image: adult-serve:opt6
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/artifacts:ro
+    restart: unless-stopped
+
+  trivy:
+    image: aquasec/trivy:latest
+    profiles:
+      - scan
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - trivy-cache:/root/.cache/
+      - ./report:/report
+    command:
+      - image
+      - --severity
+      - HIGH,CRITICAL
+      - --ignore-unfixed
+      - --format
+      - table
+      - --output
+      - /report/trivy.txt
+      - adult-serve:opt6
+
+volumes:
+  trivy-cache:
