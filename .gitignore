@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+
+# IDE et éditeurs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS et Windows
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# Variables locales et secrets
+.env
+.env.*
+!.env.example
+
+# Journaux et fichiers temporaires
+*.log
+*.tmp
+*.temp
+
+# Artefacts générés par l'entraînement
+# artifacts/*.joblib
+artifacts/*.pkl
+
+# Jeu de données complet téléchargé localement
+# data/adult.csv
+
+# Fichiers générés par Dive
+.dive-ci
+dive-report.json

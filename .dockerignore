@@ -1,0 +1,17 @@
+venv/
+.venv/
+.git/
+.agents/
+.codex/
+.aws/
+**/__pycache__/
+**/*.py[cod]
+.DS_Store
+.env
+.env.*
+artifacts/
+resultats/
+guide-tp2/
+*.pdf
+*.log
+*.zip
