@@ -1,4 +1,4 @@
-# Untitled
+
 
 # *Compte rendu TP 2 : Conteneuriser un modèle et optimiser son image*
 
@@ -8,7 +8,7 @@
 
 ***Pr. Mohammed AMEKSA***
 
-![](Untitled/image1.png)
+![](screens/image1.png)
 
 ## Dépôt GitHub
 
@@ -27,11 +27,11 @@ Ce TP porte sur la conteneurisation et le déploiement d’un modèle de Machine
 
 # 3 - La structure de projet
 
-![Screenshot 2026-10-04 at 11.25.17.png](Untitled/Screenshot_2026-10-04_at_11.25.17.png)
+![Screenshot 2026-10-04 at 11.25.17.png](screens/Screenshot_2026-10-04_at_11.25.17.png)
 
 # 4 – Vérification locale de modèle
 
-![Figure 1. La prédiction locale traite 50 observations.](Untitled/image2.png)
+![Figure 1. La prédiction locale traite 50 observations.](screens/image2.png)
 
 Figure 1. La prédiction locale traite 50 observations.
 
@@ -41,7 +41,7 @@ L’image de référence utilise python:3.11. Son rôle est de charger le modèl
 
 **1- Quelle est la durée de reconstruction après une simple modification du code ?**
 
-![Screenshot 2026-10-03 at 18.43.05.png](Untitled/Screenshot_2026-10-03_at_18.43.05.png)
+![Screenshot 2026-10-03 at 18.43.05.png](screens/Screenshot_2026-10-03_at_18.43.05.png)
 
 **2- Pourquoi est-elle presque égale à la construction à froid ?**
 
@@ -52,35 +52,35 @@ L’image de référence utilise python:3.11. Son rôle est de charger le modèl
 
 **Optimisation 1 :** Base `python:3.11-slim`
 
-![Screenshot 2026-10-03 at 20.55.13.png](Untitled/Screenshot_2026-10-03_at_20.55.13.png)
+![Screenshot 2026-10-03 at 20.55.13.png](screens/Screenshot_2026-10-03_at_20.55.13.png)
 
 > remplacement de `python:3.11` par `python:3.11-slim`. Cette version contient moins de composants système et réduit fortement la taille de l’image.
 > 
 
 **Optimisation 2 :** Installation avant copie du code
 
-![Screenshot 2026-10-03 at 20.55.32.png](Untitled/Screenshot_2026-10-03_at_20.55.32.png)
+![Screenshot 2026-10-03 at 20.55.32.png](screens/Screenshot_2026-10-03_at_20.55.32.png)
 
 > `requirements.txt` est copié et installé avant le code source. Ainsi, une modification du code ne relance pas l’installation des dépendances.
 > 
 
 **Optimisation 3 : `**.dockerignore`
 
-![image.png](Untitled/image.png)
+![image.png](screens/image.png)
 
 > **`.dockerignore` :** exclusion des fichiers inutiles comme `.git`, `__pycache__` et les environnements virtuels. Cela réduit le contexte envoyé à Docker et accélère la construction.
 > 
 
 **Optimisation 4 :** pip --no-cache-dir
 
-![Screenshot 2026-10-04 at 10.32.21.png](Untitled/Screenshot_2026-10-04_at_10.32.21.png)
+![Screenshot 2026-10-04 at 10.32.21.png](screens/Screenshot_2026-10-04_at_10.32.21.png)
 
 > l’option `pip install --no-cache-dir` empêche la conservation des fichiers téléchargés par `pip`. L’image finale devient ainsi plus légère.
 > 
 
 **Optimisation 5 : c**onstruction multi-étapes
 
-![Screenshot 2026-10-04 at 10.32.35.png](Untitled/Screenshot_2026-10-04_at_10.32.35.png)
+![Screenshot 2026-10-04 at 10.32.35.png](screens/Screenshot_2026-10-04_at_10.32.35.png)
 
 > les dépendances sont préparées dans une première étape, puis seuls les fichiers nécessaires sont copiés dans l’image finale. Cela évite d’y conserver les outils de construction inutiles.
 > 
@@ -129,7 +129,7 @@ s** |
 > L’analyse de l’image optimisée avec Dive donne un score d’efficacité de **97,94 %**.
 > 
 
-![Screenshot 2026-10-04 at 12.10.31.png](Untitled/Screenshot_2026-10-04_at_12.10.31.png)
+![Screenshot 2026-10-04 at 12.10.31.png](screens/Screenshot_2026-10-04_at_12.10.31.png)
 
 **2- Quelle couche gaspille le plus d’espace, et pourquoi ?**
 
